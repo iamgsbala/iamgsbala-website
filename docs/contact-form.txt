@@ -1,0 +1,9 @@
+<div class="enquiry-grid">
+<div><label for="enquiry-name">Your name *</label>[text* your-name id:enquiry-name autocomplete:name maxlength:100]</div>
+<div><label for="enquiry-email">Email address *</label>[email* your-email id:enquiry-email autocomplete:email maxlength:254]</div>
+<div><label for="enquiry-service">What can I help with? *</label>[select* your-service id:enquiry-service first_as_label "Select a service" "WordPress website or theme" "WooCommerce development" "Custom plugin or API integration" "Performance or troubleshooting" "Maintenance and support" "Something else"]</div>
+<div><label for="enquiry-website">Website URL <span>(optional)</span></label>[url your-website id:enquiry-website placeholder "https://"]</div>
+<div class="enquiry-wide"><label for="enquiry-message">About your project *</label>[textarea* your-message id:enquiry-message minlength:20 maxlength:4000 40x5 placeholder "What would you like to achieve? Include any timeline or requirements."]</div>
+<div class="enquiry-wide form-consent">[acceptance enquiry-consent]I agree that my details may be used to reply to this enquiry.[/acceptance]</div>
+<div class="enquiry-wide"><p class="form-note">Please do not include passwords or payment details. This form is for project enquiries; free plugin support is available through WordPress.org.</p>[submit class:button "Send enquiry"]</div>
+</div>
