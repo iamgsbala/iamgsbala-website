@@ -10,5 +10,6 @@
 <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false" hidden><?php esc_html_e( 'Menu', 'iamgsbala' ); ?> <span aria-hidden="true">☰</span></button>
 <nav id="primary-nav" aria-label="<?php esc_attr_e( 'Main navigation', 'iamgsbala' ); ?>">
 <?php foreach ( array( 'expertise' => __( 'Expertise', 'iamgsbala' ), 'work' => __( 'Work', 'iamgsbala' ), 'about' => __( 'About', 'iamgsbala' ) ) as $id => $label ) : ?><a href="<?php echo esc_url( iamgsbala_anchor( $id ) ); ?>"><?php echo esc_html( $label ); ?></a><?php endforeach; ?>
+<a href="<?php echo esc_url( iamgsbala_ordercraft_url() ); ?>"><?php esc_html_e( 'OrderCraft Studio', 'iamgsbala' ); ?></a>
 <a class="nav-contact" href="<?php echo esc_url( iamgsbala_anchor( 'contact' ) ); ?>"><?php esc_html_e( 'Let’s talk', 'iamgsbala' ); ?> <span aria-hidden="true">↗</span></a>
 </nav></div></header>

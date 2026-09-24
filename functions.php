@@ -13,12 +13,89 @@ add_action( 'after_setup_theme', 'iamgsbala_setup' );
 function iamgsbala_assets() {
 	wp_enqueue_style( 'iamgsbala', get_stylesheet_uri(), array(), '1.1.0' );
 	wp_enqueue_script( 'iamgsbala', get_template_directory_uri() . '/assets/site.js', array(), '1.1.0', true );
+	if ( is_page( array( 'ordercraft-studio-for-woocommerce', 'ordercraft-studio', 'ordercraft-studio-documentation', 'ordercraft-documentation' ) ) || is_page_template( 'page-ordercraft-studio.php' ) || is_page_template( 'page-ordercraft-studio-legacy.php' ) || is_page_template( 'page-ordercraft-studio-documentation.php' ) ) {
+		wp_enqueue_style( 'iamgsbala-ordercraft', get_template_directory_uri() . '/assets/ordercraft.css', array( 'iamgsbala' ), '1.3.0' );
+	}
 	if ( is_front_page() && iamgsbala_contact_form() ) {
 		if ( function_exists( 'wpcf7_enqueue_scripts' ) ) { wpcf7_enqueue_scripts(); }
 		if ( function_exists( 'wpcf7_enqueue_styles' ) ) { wpcf7_enqueue_styles(); }
 	}
 }
 add_action( 'wp_enqueue_scripts', 'iamgsbala_assets' );
+
+/** Keep the public OrderCraft product and documentation pages visible while the store is in Coming Soon mode. */
+function iamgsbala_ordercraft_exclude_from_coming_soon( $exclude ) {
+	if ( is_page( array( 'ordercraft-studio-for-woocommerce', 'ordercraft-studio-documentation' ) ) || is_page_template( array( 'page-ordercraft-studio.php', 'page-ordercraft-studio-documentation.php' ) ) ) {
+		return true;
+	}
+	return $exclude;
+}
+add_filter( 'woocommerce_coming_soon_exclude', 'iamgsbala_ordercraft_exclude_from_coming_soon', 20 );
+
+/** Give the standalone product pages their own browser/search titles. */
+function iamgsbala_ordercraft_document_title( $parts ) {
+	if ( is_page( 'ordercraft-studio-documentation' ) ) {
+		$parts['title'] = 'Documentation | OrderCraft Studio';
+	} elseif ( is_page( array( 'ordercraft-studio-for-woocommerce', 'ordercraft-studio' ) ) ) {
+		$parts['title'] = 'OrderCraft Studio | Custom-order workflow for WooCommerce';
+	}
+	return $parts;
+}
+add_filter( 'document_title_parts', 'iamgsbala_ordercraft_document_title', 20 );
+
+function iamgsbala_ordercraft_pre_document_title( $title ) {
+	if ( is_page( 'ordercraft-studio-documentation' ) ) {
+		return 'Documentation | OrderCraft Studio';
+	}
+	if ( is_page( array( 'ordercraft-studio-for-woocommerce', 'ordercraft-studio' ) ) ) {
+		return 'OrderCraft Studio | Custom-order workflow for WooCommerce';
+	}
+	return $title;
+}
+add_filter( 'pre_get_document_title', 'iamgsbala_ordercraft_pre_document_title', 20 );
+
+/**
+ * Create the public OrderCraft Studio pages once for the site owner.
+ *
+ * @return void
+ */
+function iamgsbala_ordercraft_pages() {
+	$pages = array(
+		'ordercraft-studio-for-woocommerce'        => array( 'title' => 'OrderCraft Studio for WooCommerce', 'template' => 'page-ordercraft-studio.php' ),
+		'ordercraft-studio-documentation' => array( 'title' => 'OrderCraft Studio Documentation', 'template' => 'page-ordercraft-studio-documentation.php' ),
+	);
+
+	if ( get_option( 'iamgsbala_ordercraft_pages_ready' ) ) {
+		$pages_exist = true;
+		foreach ( $pages as $slug => $page ) {
+			$existing = get_page_by_path( $slug );
+			if ( ! $existing || get_page_template_slug( $existing->ID ) !== $page['template'] ) {
+				$pages_exist = false;
+				break;
+			}
+		}
+		if ( $pages_exist ) {
+			return;
+		}
+	}
+
+	foreach ( $pages as $slug => $page ) {
+		$existing = get_page_by_path( $slug );
+		$page_id  = $existing ? $existing->ID : wp_insert_post( array( 'post_title' => $page['title'], 'post_name' => $slug, 'post_status' => 'publish', 'post_type' => 'page' ), true );
+		if ( is_wp_error( $page_id ) || ! $page_id ) {
+			continue;
+		}
+		update_post_meta( $page_id, '_wp_page_template', $page['template'] );
+	}
+
+	update_option( 'iamgsbala_ordercraft_pages_ready', '1', false );
+}
+add_action( 'init', 'iamgsbala_ordercraft_pages', 20 );
+
+function iamgsbala_ordercraft_url( $slug = 'ordercraft-studio-for-woocommerce' ) {
+	$page = get_page_by_path( $slug );
+	return $page ? get_permalink( $page ) : home_url( '/' . trim( $slug, '/' ) . '/' );
+}
 function iamgsbala_customize( $customizer ) {
 	$customizer->add_section( 'iamgsbala_profile', array( 'title' => __( 'iamgsbala Profile', 'iamgsbala' ), 'priority' => 30 ) );
 	$fields = array(
