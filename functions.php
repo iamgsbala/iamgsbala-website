@@ -92,6 +92,74 @@ function iamgsbala_ordercraft_pages() {
 }
 add_action( 'init', 'iamgsbala_ordercraft_pages', 20 );
 
+/**
+ * Keep the OrderCraft microsite on its own host while it shares this WordPress
+ * installation with iamgsbala.com.
+ *
+ * The subdomain must point to the same WordPress document root. These filters
+ * then keep generated page, asset and canonical URLs on that host only while a
+ * visitor is browsing the subdomain.
+ */
+function iamgsbala_ordercraft_subdomain_host() {
+	return 'ordercraft.iamgsbala.com';
+}
+
+function iamgsbala_ordercraft_is_subdomain_request() {
+	$host = isset( $_SERVER['HTTP_HOST'] ) ? strtolower( (string) wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
+	$host = preg_replace( '/:\d+$/', '', $host );
+	return $host && iamgsbala_ordercraft_subdomain_host() === $host;
+}
+
+function iamgsbala_ordercraft_subdomain_url( $url ) {
+	if ( ! iamgsbala_ordercraft_is_subdomain_request() || ! $url ) {
+		return $url;
+	}
+
+	$parts = wp_parse_url( $url );
+	if ( ! is_array( $parts ) ) {
+		return $url;
+	}
+
+	$scheme = ! empty( $parts['scheme'] ) ? $parts['scheme'] : ( is_ssl() ? 'https' : 'http' );
+	$port   = ! empty( $parts['port'] ) ? ':' . absint( $parts['port'] ) : '';
+	$path   = isset( $parts['path'] ) ? $parts['path'] : '/';
+	$query  = isset( $parts['query'] ) ? '?' . $parts['query'] : '';
+	$fragment = isset( $parts['fragment'] ) ? '#' . $parts['fragment'] : '';
+
+	return $scheme . '://' . iamgsbala_ordercraft_subdomain_host() . $port . $path . $query . $fragment;
+}
+
+function iamgsbala_ordercraft_subdomain_home_url( $url ) {
+	return iamgsbala_ordercraft_subdomain_url( $url );
+}
+add_filter( 'home_url', 'iamgsbala_ordercraft_subdomain_home_url', 20 );
+add_filter( 'site_url', 'iamgsbala_ordercraft_subdomain_home_url', 20 );
+
+/** Give the subdomain a clean homepage and documentation shortcut. */
+function iamgsbala_ordercraft_subdomain_routes() {
+	if ( ! iamgsbala_ordercraft_is_subdomain_request() || is_admin() || wp_doing_ajax() || wp_doing_cron() || is_feed() ) {
+		return;
+	}
+
+	$path = wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/', PHP_URL_PATH );
+	$path = '/' . trim( (string) $path, '/' ) . '/';
+
+	if ( '//' === $path ) {
+		$path = '/';
+	}
+
+	if ( '/' === $path ) {
+		wp_safe_redirect( iamgsbala_ordercraft_url(), 301 );
+		exit;
+	}
+
+	if ( '/documentation/' === strtolower( $path ) ) {
+		wp_safe_redirect( iamgsbala_ordercraft_url( 'ordercraft-studio-documentation' ), 301 );
+		exit;
+	}
+}
+add_action( 'template_redirect', 'iamgsbala_ordercraft_subdomain_routes', 1 );
+
 function iamgsbala_ordercraft_url( $slug = 'ordercraft-studio-for-woocommerce' ) {
 	$page = get_page_by_path( $slug );
 	return $page ? get_permalink( $page ) : home_url( '/' . trim( $slug, '/' ) . '/' );
