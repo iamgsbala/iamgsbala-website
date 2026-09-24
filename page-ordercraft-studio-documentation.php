@@ -6,7 +6,7 @@
  */
 defined( 'ABSPATH' ) || exit;
 get_header( 'ordercraft' );
-$guide_url = get_template_directory_uri() . '/assets/ordercraft-guides/';
+$guide_url = iamgsbala_ordercraft_subdomain_url( get_template_directory_uri() . '/assets/ordercraft-guides/' );
 ?>
 <main id="main" class="ordercraft-site-page ordercraft-docs-page">
 	<section class="ordercraft-docs-hero shell">
