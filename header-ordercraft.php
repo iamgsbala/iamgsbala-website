@@ -21,8 +21,8 @@
 				<a href="<?php echo esc_url( iamgsbala_ordercraft_url( iamgsbala_ordercraft_documentation_slug() ) ); ?>"><?php esc_html_e( 'Documentation', 'iamgsbala' ); ?></a>
 				<a href="<?php echo esc_url( iamgsbala_ordercraft_url() . '#plans' ); ?>"><?php esc_html_e( 'Pricing', 'iamgsbala' ); ?></a>
 				<a href="https://iamgsbala.com/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'iamgsbala', 'iamgsbala' ); ?> ↗</a>
-				<a class="ordercraft-nav__github" href="https://wordpress.org/plugins/iamgsbala-custom-order-workflow-for-woocommerce/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'View on WordPress.org', 'iamgsbala' ); ?></a>
-				<a class="ordercraft-nav__cta" href="https://wordpress.org/plugins/iamgsbala-custom-order-workflow-for-woocommerce/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Get the free plugin', 'iamgsbala' ); ?> ↗</a>
+				<a class="ordercraft-nav__github" href="<?php echo esc_url( iamgsbala_ordercraft_plugin_url( 'header-directory' ) ); ?>" data-oc-track="wporg_click" data-oc-placement="header-directory" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'View on WordPress.org', 'iamgsbala' ); ?></a>
+				<a class="ordercraft-nav__cta" href="<?php echo esc_url( iamgsbala_ordercraft_plugin_url( 'header-cta' ) ); ?>" data-oc-track="wporg_click" data-oc-placement="header-cta" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Get the free plugin', 'iamgsbala' ); ?> ↗</a>
 			</nav>
 		</div>
 	</header>

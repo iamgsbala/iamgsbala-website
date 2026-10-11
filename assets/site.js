@@ -1,5 +1,20 @@
 (() => {
   'use strict';
+
+  // Keep conversion links measurable when GA4, Site Kit or another dataLayer consumer is enabled.
+  document.addEventListener('click', event => {
+    const link = event.target.closest('[data-oc-track]');
+    if (!link) return;
+    const eventName = link.getAttribute('data-oc-track');
+    const placement = link.getAttribute('data-oc-placement') || 'unknown';
+    const payload = { event: 'ordercraft_marketing_click', ordercraft_event: eventName, placement };
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(payload);
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', eventName, { placement, link_url: link.href });
+    }
+  });
+
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#primary-nav');
   if (!toggle || !nav) return;

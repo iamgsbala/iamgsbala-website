@@ -22,7 +22,7 @@ function iamgsbala_ordercraft_documentation_slug() {
 
 function iamgsbala_assets() {
 	wp_enqueue_style( 'iamgsbala', get_stylesheet_uri(), array(), '1.1.0' );
-	wp_enqueue_script( 'iamgsbala', get_template_directory_uri() . '/assets/site.js', array(), '1.1.0', true );
+	wp_enqueue_script( 'iamgsbala', get_template_directory_uri() . '/assets/site.js', array(), '1.2.0', true );
 	if ( is_page( array( iamgsbala_ordercraft_product_slug(), iamgsbala_ordercraft_documentation_slug(), 'ordercraft-studio-for-woocommerce', 'ordercraft-studio', 'ordercraft-studio-documentation', 'ordercraft-documentation' ) ) || is_page_template( 'page-ordercraft-studio.php' ) || is_page_template( 'page-ordercraft-studio-legacy.php' ) || is_page_template( 'page-ordercraft-studio-documentation.php' ) ) {
 		wp_enqueue_style( 'iamgsbala-ordercraft', get_template_directory_uri() . '/assets/ordercraft.css', array( 'iamgsbala' ), '1.4.0' );
 	}
@@ -209,6 +209,30 @@ function iamgsbala_ordercraft_url( $slug = '' ) {
 	$page = get_page_by_path( $slug );
 	return $page ? get_permalink( $page ) : home_url( '/' . trim( $slug, '/' ) . '/' );
 }
+
+function iamgsbala_ordercraft_plugin_url( $campaign = 'website' ) {
+	return add_query_arg(
+		array(
+			'utm_source'   => 'iamgsbala.com',
+			'utm_medium'   => 'referral',
+			'utm_campaign' => sanitize_key( $campaign ),
+		),
+		'https://wordpress.org/plugins/iamgsbala-custom-order-workflow-for-woocommerce/'
+	);
+}
+
+/** Add focused search snippets to the standalone product and documentation pages. */
+function iamgsbala_ordercraft_meta_description() {
+	if ( is_page( iamgsbala_ordercraft_product_slug() ) || is_page_template( 'page-ordercraft-studio.php' ) ) {
+		$description = 'Custom Order Workflow for WooCommerce connects specifications, artwork uploads, proof approval and production workflow for print and personalized-product stores.';
+	} elseif ( is_page( iamgsbala_ordercraft_documentation_slug() ) || is_page_template( 'page-ordercraft-studio-documentation.php' ) ) {
+		$description = 'Learn how to set up Custom Order Workflow for WooCommerce, configure products, review artwork, send proofs and move approved orders into production.';
+	} else {
+		return;
+	}
+	echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
+}
+add_action( 'wp_head', 'iamgsbala_ordercraft_meta_description', 2 );
 function iamgsbala_customize( $customizer ) {
 	$customizer->add_section( 'iamgsbala_profile', array( 'title' => __( 'iamgsbala Profile', 'iamgsbala' ), 'priority' => 30 ) );
 	$fields = array(
