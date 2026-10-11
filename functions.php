@@ -24,7 +24,7 @@ function iamgsbala_assets() {
 	wp_enqueue_style( 'iamgsbala', get_stylesheet_uri(), array(), '1.1.0' );
 	wp_enqueue_script( 'iamgsbala', get_template_directory_uri() . '/assets/site.js', array(), '1.2.0', true );
 	if ( is_page( array( iamgsbala_ordercraft_product_slug(), iamgsbala_ordercraft_documentation_slug(), 'ordercraft-studio-for-woocommerce', 'ordercraft-studio', 'ordercraft-studio-documentation', 'ordercraft-documentation' ) ) || is_page_template( 'page-ordercraft-studio.php' ) || is_page_template( 'page-ordercraft-studio-legacy.php' ) || is_page_template( 'page-ordercraft-studio-documentation.php' ) ) {
-		wp_enqueue_style( 'iamgsbala-ordercraft', get_template_directory_uri() . '/assets/ordercraft.css', array( 'iamgsbala' ), '1.4.0' );
+		wp_enqueue_style( 'iamgsbala-ordercraft', get_template_directory_uri() . '/assets/ordercraft.css', array( 'iamgsbala' ), '1.5.0' );
 	}
 	if ( is_front_page() && iamgsbala_contact_form() ) {
 		if ( function_exists( 'wpcf7_enqueue_scripts' ) ) { wpcf7_enqueue_scripts(); }
