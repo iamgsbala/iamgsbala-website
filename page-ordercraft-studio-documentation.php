@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: OrderCraft Studio documentation
+ * Template Name: Custom Order Workflow documentation
  *
  * @package iamgsbala
  */
@@ -13,9 +13,9 @@ $guide_url = iamgsbala_ordercraft_subdomain_url( get_template_directory_uri() . 
 		<div>
 			<p class="ordercraft-kicker"><span class="ordercraft-kicker-dot"></span><?php esc_html_e( 'OrderCraft Studio · by iamgsbala', 'iamgsbala' ); ?></p>
 			<h1><?php esc_html_e( 'Documentation that keeps the workflow moving.', 'iamgsbala' ); ?></h1>
-			<p class="ordercraft-lead"><?php esc_html_e( 'A practical, screen-by-screen guide for store owners, production teams and customers using OrderCraft Studio for WooCommerce.', 'iamgsbala' ); ?></p>
+			<p class="ordercraft-lead"><?php esc_html_e( 'A practical, screen-by-screen guide for store owners, production teams and customers using Custom Order Workflow for WooCommerce.', 'iamgsbala' ); ?></p>
 		</div>
-		<a class="ordercraft-button ordercraft-button--primary" href="<?php echo esc_url( iamgsbala_ordercraft_url() ); ?>">← <?php esc_html_e( 'Back to OrderCraft Studio', 'iamgsbala' ); ?></a>
+		<a class="ordercraft-button ordercraft-button--primary" href="<?php echo esc_url( iamgsbala_ordercraft_url() ); ?>">← <?php esc_html_e( 'Back to Custom Order Workflow', 'iamgsbala' ); ?></a>
 	</section>
 
 	<section class="ordercraft-docs-layout shell">
@@ -119,6 +119,6 @@ $guide_url = iamgsbala_ordercraft_subdomain_url( get_template_directory_uri() . 
 		</article>
 	</section>
 
-	<section class="ordercraft-doc-cta"><div class="shell"><div><p class="ordercraft-kicker"><?php esc_html_e( 'Ready to test?', 'iamgsbala' ); ?></p><h2><?php esc_html_e( 'Give one custom order a clear next step.', 'iamgsbala' ); ?></h2></div><a class="ordercraft-button ordercraft-button--light" href="https://wordpress.org/plugins/ordercraft-studio-for-woocommerce/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Get the free plugin', 'iamgsbala' ); ?> ↗</a></div></section>
+	<section class="ordercraft-doc-cta"><div class="shell"><div><p class="ordercraft-kicker"><?php esc_html_e( 'Ready to test?', 'iamgsbala' ); ?></p><h2><?php esc_html_e( 'Give one custom order a clear next step.', 'iamgsbala' ); ?></h2></div><a class="ordercraft-button ordercraft-button--light" href="https://wordpress.org/plugins/iamgsbala-custom-order-workflow-for-woocommerce/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Get the free plugin', 'iamgsbala' ); ?> ↗</a></div></section>
 </main>
 <?php get_footer( 'ordercraft' ); ?>

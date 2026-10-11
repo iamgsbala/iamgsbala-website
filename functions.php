@@ -14,7 +14,7 @@ function iamgsbala_assets() {
 	wp_enqueue_style( 'iamgsbala', get_stylesheet_uri(), array(), '1.1.0' );
 	wp_enqueue_script( 'iamgsbala', get_template_directory_uri() . '/assets/site.js', array(), '1.1.0', true );
 	if ( is_page( array( 'ordercraft-studio-for-woocommerce', 'ordercraft-studio', 'ordercraft-studio-documentation', 'ordercraft-documentation' ) ) || is_page_template( 'page-ordercraft-studio.php' ) || is_page_template( 'page-ordercraft-studio-legacy.php' ) || is_page_template( 'page-ordercraft-studio-documentation.php' ) ) {
-		wp_enqueue_style( 'iamgsbala-ordercraft', get_template_directory_uri() . '/assets/ordercraft.css', array( 'iamgsbala' ), '1.3.0' );
+		wp_enqueue_style( 'iamgsbala-ordercraft', get_template_directory_uri() . '/assets/ordercraft.css', array( 'iamgsbala' ), '1.4.0' );
 	}
 	if ( is_front_page() && iamgsbala_contact_form() ) {
 		if ( function_exists( 'wpcf7_enqueue_scripts' ) ) { wpcf7_enqueue_scripts(); }
@@ -32,12 +32,24 @@ function iamgsbala_ordercraft_exclude_from_coming_soon( $exclude ) {
 }
 add_filter( 'woocommerce_coming_soon_exclude', 'iamgsbala_ordercraft_exclude_from_coming_soon', 20 );
 
+/** Keep legacy wording in the documentation template from exposing the retired product name. */
+function iamgsbala_ordercraft_brand_output_buffer() {
+	if ( is_page_template( 'page-ordercraft-studio-documentation.php' ) ) {
+		ob_start(
+			static function ( $html ) {
+				return str_replace( 'OrderCraft Studio', 'Custom Order Workflow', $html );
+			}
+		);
+	}
+}
+add_action( 'template_redirect', 'iamgsbala_ordercraft_brand_output_buffer', 100 );
+
 /** Give the standalone product pages their own browser/search titles. */
 function iamgsbala_ordercraft_document_title( $parts ) {
 	if ( is_page( 'ordercraft-studio-documentation' ) ) {
-		$parts['title'] = 'Documentation | OrderCraft Studio';
+		$parts['title'] = 'Documentation | Custom Order Workflow';
 	} elseif ( is_page( array( 'ordercraft-studio-for-woocommerce', 'ordercraft-studio' ) ) ) {
-		$parts['title'] = 'OrderCraft Studio | Custom-order workflow for WooCommerce';
+		$parts['title'] = 'Custom Order Workflow for WooCommerce | iamgsbala';
 	}
 	return $parts;
 }
@@ -45,10 +57,10 @@ add_filter( 'document_title_parts', 'iamgsbala_ordercraft_document_title', 20 );
 
 function iamgsbala_ordercraft_pre_document_title( $title ) {
 	if ( is_page( 'ordercraft-studio-documentation' ) ) {
-		return 'Documentation | OrderCraft Studio';
+		return 'Documentation | Custom Order Workflow';
 	}
 	if ( is_page( array( 'ordercraft-studio-for-woocommerce', 'ordercraft-studio' ) ) ) {
-		return 'OrderCraft Studio | Custom-order workflow for WooCommerce';
+		return 'Custom Order Workflow for WooCommerce | iamgsbala';
 	}
 	return $title;
 }
@@ -61,8 +73,8 @@ add_filter( 'pre_get_document_title', 'iamgsbala_ordercraft_pre_document_title',
  */
 function iamgsbala_ordercraft_pages() {
 	$pages = array(
-		'ordercraft-studio-for-woocommerce'        => array( 'title' => 'OrderCraft Studio for WooCommerce', 'template' => 'page-ordercraft-studio.php' ),
-		'ordercraft-studio-documentation' => array( 'title' => 'OrderCraft Studio Documentation', 'template' => 'page-ordercraft-studio-documentation.php' ),
+		'ordercraft-studio-for-woocommerce'        => array( 'title' => 'Custom Order Workflow for WooCommerce', 'template' => 'page-ordercraft-studio.php' ),
+		'ordercraft-studio-documentation' => array( 'title' => 'Custom Order Workflow Documentation', 'template' => 'page-ordercraft-studio-documentation.php' ),
 	);
 
 	if ( get_option( 'iamgsbala_ordercraft_pages_ready' ) ) {
