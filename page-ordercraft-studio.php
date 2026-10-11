@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $plugin_url = 'https://wordpress.org/plugins/iamgsbala-custom-order-workflow-for-woocommerce/';
-$docs_url   = iamgsbala_ordercraft_url( 'ordercraft-studio-documentation' );
+$docs_url   = iamgsbala_ordercraft_url( iamgsbala_ordercraft_documentation_slug() );
 $guide_base = get_template_directory_uri() . '/assets/ordercraft-guides/';
 
 get_header( 'ordercraft' );
@@ -23,6 +23,8 @@ get_header( 'ordercraft' );
 		</div>
 		<div class="ordercraft-product-hero__visual"><div class="ordercraft-hero-window"><div class="ordercraft-window-top"><span><i></i><i></i><i></i></span><b>JOB 1042 · V3</b><em>DATA LOCKED</em></div><div class="ordercraft-window-heading"><strong><?php esc_html_e( 'Custom product production job', 'iamgsbala' ); ?></strong><small><?php esc_html_e( 'Order item · Status: Waiting customer approval', 'iamgsbala' ); ?></small></div><div class="ordercraft-window-grid"><div class="ordercraft-window-preview"><span><?php esc_html_e( 'VECTOR PROOF', 'iamgsbala' ); ?></span><div class="ordercraft-window-art"><b>CW</b><small>customer-proof-v2.pdf</small></div><em>✓ <?php esc_html_e( 'Artwork accepted', 'iamgsbala' ); ?></em></div><div class="ordercraft-window-side"><b><?php esc_html_e( 'Brief snapshot', 'iamgsbala' ); ?></b><span>PRODUCT <strong>Custom product</strong></span><span>QUANTITY <strong>18 units</strong></span><span>PROOF <strong>Revision 2</strong></span><span>STATUS <strong class="lime">Waiting approval</strong></span></div></div><div class="ordercraft-window-bottom"><span><?php esc_html_e( 'Latest proof v2.pdf', 'iamgsbala' ); ?></span><button><?php esc_html_e( 'Request revision', 'iamgsbala' ); ?></button><button class="lime-button"><?php esc_html_e( 'Approve proof', 'iamgsbala' ); ?></button></div></div></div>
 	</section>
+
+	<section class="ordercraft-trust-row shell" aria-label="<?php esc_attr_e( 'Free workflow capabilities', 'iamgsbala' ); ?>"><span><b>01</b><?php esc_html_e( 'Per-order-item Jobs', 'iamgsbala' ); ?></span><span><b>02</b><?php esc_html_e( 'Protected artwork files', 'iamgsbala' ); ?></span><span><b>03</b><?php esc_html_e( 'Versioned proof review', 'iamgsbala' ); ?></span><span><b>04</b><?php esc_html_e( 'WooCommerce hand-off', 'iamgsbala' ); ?></span></section>
 
 	<section id="workflow" class="ordercraft-workflow-strip"><div class="shell"><p class="ordercraft-kicker"><?php esc_html_e( 'One connected workflow', 'iamgsbala' ); ?></p><ol><li><b>01</b><strong><?php esc_html_e( 'Specifications', 'iamgsbala' ); ?></strong><small><?php esc_html_e( 'Structured checkout fields', 'iamgsbala' ); ?></small></li><li><b>02</b><strong><?php esc_html_e( 'Artwork', 'iamgsbala' ); ?></strong><small><?php esc_html_e( 'Protected customer files', 'iamgsbala' ); ?></small></li><li><b>03</b><strong><?php esc_html_e( 'Proof', 'iamgsbala' ); ?></strong><small><?php esc_html_e( 'Versioned PDF/SVG proofs', 'iamgsbala' ); ?></small></li><li><b>04</b><strong><?php esc_html_e( 'Approval', 'iamgsbala' ); ?></strong><small><?php esc_html_e( 'Customer confirms or requests changes', 'iamgsbala' ); ?></small></li><li><b>05</b><strong><?php esc_html_e( 'Production', 'iamgsbala' ); ?></strong><small><?php esc_html_e( 'A clear shop-floor hand-off', 'iamgsbala' ); ?></small></li></ol></div></section>
 

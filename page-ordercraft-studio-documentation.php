@@ -11,7 +11,7 @@ $guide_url = iamgsbala_ordercraft_subdomain_url( get_template_directory_uri() . 
 <main id="main" class="ordercraft-site-page ordercraft-docs-page">
 	<section class="ordercraft-docs-hero shell">
 		<div>
-			<p class="ordercraft-kicker"><span class="ordercraft-kicker-dot"></span><?php esc_html_e( 'OrderCraft Studio · by iamgsbala', 'iamgsbala' ); ?></p>
+			<p class="ordercraft-kicker"><span class="ordercraft-kicker-dot"></span><?php esc_html_e( 'Custom Order Workflow · by iamgsbala', 'iamgsbala' ); ?></p>
 			<h1><?php esc_html_e( 'Documentation that keeps the workflow moving.', 'iamgsbala' ); ?></h1>
 			<p class="ordercraft-lead"><?php esc_html_e( 'A practical, screen-by-screen guide for store owners, production teams and customers using Custom Order Workflow for WooCommerce.', 'iamgsbala' ); ?></p>
 		</div>
@@ -36,11 +36,11 @@ $guide_url = iamgsbala_ordercraft_subdomain_url( get_template_directory_uri() . 
 			<section id="quick-start">
 				<p class="ordercraft-kicker">01 / <?php esc_html_e( 'Quick start', 'iamgsbala' ); ?></p>
 				<h2><?php esc_html_e( 'Install the free workflow in four moves.', 'iamgsbala' ); ?></h2>
-				<p class="ordercraft-guide-intro"><?php esc_html_e( 'OrderCraft Studio adds a structured production layer to WooCommerce. The product remains the place where customers order; the Job becomes the place where your team reviews files, sends proofs and moves work into production.', 'iamgsbala' ); ?></p>
+				<p class="ordercraft-guide-intro"><?php esc_html_e( 'Custom Order Workflow adds a structured production layer to WooCommerce. The product remains the place where customers order; the Job becomes the place where your team reviews files, sends proofs and moves work into production.', 'iamgsbala' ); ?></p>
 				<ol class="ordercraft-number-list">
 					<li><b>01</b><div><strong><?php esc_html_e( 'Check the requirements', 'iamgsbala' ); ?></strong><p><?php esc_html_e( 'Use a supported WordPress/PHP installation with WooCommerce active. Customers need an account when proof approval is enabled.', 'iamgsbala' ); ?></p></div></li>
-					<li><b>02</b><div><strong><?php esc_html_e( 'Install OrderCraft Studio', 'iamgsbala' ); ?></strong><p><?php esc_html_e( 'Install it from WordPress.org, activate it, then open OrderCraft Studio in the WordPress admin menu.', 'iamgsbala' ); ?></p></div></li>
-					<li><b>03</b><div><strong><?php esc_html_e( 'Configure one product', 'iamgsbala' ); ?></strong><p><?php esc_html_e( 'Open a WooCommerce product and use the OrderCraft Studio product panel to enable the workflow, artwork upload, proof approval and specification fields.', 'iamgsbala' ); ?></p></div></li>
+					<li><b>02</b><div><strong><?php esc_html_e( 'Install Custom Order Workflow', 'iamgsbala' ); ?></strong><p><?php esc_html_e( 'Install it from WordPress.org, activate it, then open Custom Order Workflow in the WordPress admin menu.', 'iamgsbala' ); ?></p></div></li>
+					<li><b>03</b><div><strong><?php esc_html_e( 'Configure one product', 'iamgsbala' ); ?></strong><p><?php esc_html_e( 'Open a WooCommerce product and use the Custom Order Workflow product panel to enable the workflow, artwork upload, proof approval and specification fields.', 'iamgsbala' ); ?></p></div></li>
 					<li><b>04</b><div><strong><?php esc_html_e( 'Run a complete test order', 'iamgsbala' ); ?></strong><p><?php esc_html_e( 'Place a test order, upload artwork, open the Job, upload a proof and approve it from My Account. Confirm that the order status follows the Job milestone.', 'iamgsbala' ); ?></p></div></li>
 				</ol>
 				<div class="ordercraft-callout"><strong><?php esc_html_e( 'Recommended first test', 'iamgsbala' ); ?></strong><p><?php esc_html_e( 'Use one simple product with one required text field and a small JPG. This verifies the customer form, private file handler, Job creation, proof approval and status synchronization without introducing extra variables.', 'iamgsbala' ); ?></p></div>
@@ -49,7 +49,7 @@ $guide_url = iamgsbala_ordercraft_subdomain_url( get_template_directory_uri() . 
 			<section id="settings">
 				<p class="ordercraft-kicker">02 / <?php esc_html_e( 'Global settings', 'iamgsbala' ); ?></p>
 				<h2><?php esc_html_e( 'Set the rules once for the whole store.', 'iamgsbala' ); ?></h2>
-				<p class="ordercraft-guide-intro"><?php esc_html_e( 'Open OrderCraft Studio → Settings to control file handling and data retention. Product-level switches still decide which products use the workflow.', 'iamgsbala' ); ?></p>
+				<p class="ordercraft-guide-intro"><?php esc_html_e( 'Open Custom Order Workflow → Settings to control file handling and data retention. Product-level switches still decide which products use the workflow.', 'iamgsbala' ); ?></p>
 				<div class="ordercraft-option-grid">
 					<div class="ordercraft-option-card"><b><?php esc_html_e( 'Maximum artwork size', 'iamgsbala' ); ?></b><p><?php esc_html_e( 'Choose 1–100 MB. The default is 25 MB. Keep this close to what your production team really needs so uploads stay reliable.', 'iamgsbala' ); ?></p></div>
 					<div class="ordercraft-option-card"><b><?php esc_html_e( 'Allowed extensions', 'iamgsbala' ); ?></b><p><?php esc_html_e( 'PDF, AI, EPS, PNG, JPG/JPEG, TIF/TIFF and ZIP are available. SVG is not selected by default because it needs sanitization before customer use.', 'iamgsbala' ); ?></p></div>
@@ -62,7 +62,7 @@ $guide_url = iamgsbala_ordercraft_subdomain_url( get_template_directory_uri() . 
 			<section id="product-setup">
 				<p class="ordercraft-kicker">03 / <?php esc_html_e( 'Product setup', 'iamgsbala' ); ?></p>
 				<h2><?php esc_html_e( 'Turn a normal product into a custom-order product.', 'iamgsbala' ); ?></h2>
-				<p class="ordercraft-guide-intro"><?php esc_html_e( 'The OrderCraft Studio tab appears inside the WooCommerce product editor. Configure these options before publishing the product or accepting a live custom order.', 'iamgsbala' ); ?></p>
+				<p class="ordercraft-guide-intro"><?php esc_html_e( 'The Custom Order Workflow tab appears inside the WooCommerce product editor. Configure these options before publishing the product or accepting a live custom order.', 'iamgsbala' ); ?></p>
 				<div class="ordercraft-doc-details">
 					<details open><summary><?php esc_html_e( 'Enable custom order operations', 'iamgsbala' ); ?></summary><p><?php esc_html_e( 'Creates one production Job for each eligible order item. The Job stores the product, WooCommerce order ID, specification snapshot, artwork, proofs, status and activity trail.', 'iamgsbala' ); ?></p></details>
 					<details><summary><?php esc_html_e( 'Require customer approval', 'iamgsbala' ); ?></summary><p><?php esc_html_e( 'Adds the proof-review step and requires a customer account for approval. Staff can send a current proof, the customer can approve it or request changes, and the approval is recorded against that proof version.', 'iamgsbala' ); ?></p></details>
@@ -83,7 +83,7 @@ $guide_url = iamgsbala_ordercraft_subdomain_url( get_template_directory_uri() . 
 			<section id="jobs">
 				<p class="ordercraft-kicker">05 / <?php esc_html_e( 'Jobs and activity', 'iamgsbala' ); ?></p>
 				<h2><?php esc_html_e( 'A Job is the production record for one order item.', 'iamgsbala' ); ?></h2>
-				<p class="ordercraft-guide-intro"><?php esc_html_e( 'Open OrderCraft Studio → Jobs, then select a Job to see the full context. This is where the team reviews the immutable specification snapshot, artwork revisions, proof versions, status and activity.', 'iamgsbala' ); ?></p>
+				<p class="ordercraft-guide-intro"><?php esc_html_e( 'Open Custom Order Workflow → Jobs, then select a Job to see the full context. This is where the team reviews the immutable specification snapshot, artwork revisions, proof versions, status and activity.', 'iamgsbala' ); ?></p>
 				<div class="ordercraft-option-grid"><div class="ordercraft-option-card"><b><?php esc_html_e( 'Specification snapshot', 'iamgsbala' ); ?></b><p><?php esc_html_e( 'Shows the values submitted with the order. Historical values remain stable even if the product field label later changes.', 'iamgsbala' ); ?></p></div><div class="ordercraft-option-card"><b><?php esc_html_e( 'Artwork', 'iamgsbala' ); ?></b><p><?php esc_html_e( 'Review the current file, see previous versions, preview supported images and download authorized files.', 'iamgsbala' ); ?></p></div><div class="ordercraft-option-card"><b><?php esc_html_e( 'Proofs', 'iamgsbala' ); ?></b><p><?php esc_html_e( 'Upload a new revision, add a customer message and make the current proof available in My Account.', 'iamgsbala' ); ?></p></div><div class="ordercraft-option-card"><b><?php esc_html_e( 'Activity trail', 'iamgsbala' ); ?></b><p><?php esc_html_e( 'Every important status, upload, approval and change request is recorded with the actor and timestamp.', 'iamgsbala' ); ?></p></div></div>
 				<figure class="ordercraft-guide-figure"><img src="<?php echo esc_url( $guide_url . 'ordercraft-job-guide.png' ); ?>" alt="OrderCraft Studio Job detail screen showing status steps, specifications, files and activity"><figcaption><strong><?php esc_html_e( 'Interface guide: Job detail and production hand-off.', 'iamgsbala' ); ?></strong> <?php esc_html_e( 'The Job connects the customer request to the action your team takes next.', 'iamgsbala' ); ?></figcaption></figure>
 			</section>
